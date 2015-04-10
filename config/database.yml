@@ -24,6 +24,10 @@ default: &default
 development:
   <<: *default
   database: settle_development
+  adapter: postgresql
+  pool: 5
+  username:
+  password:
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
