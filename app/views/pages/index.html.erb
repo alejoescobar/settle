@@ -1,0 +1,39 @@
+<header class="intro-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>Settle is the new way keep track <strong>of your knowledge</strong></h1>
+          <p>
+          <%= link_to "create account", new_user_registration_path, class: "btn btn-default btn-lg" , "data-toggle" => "modal" , "data-target" => "#login" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+
+
+<div id="login" class="container modal fade">
+  <div class="card card-container modal-dialog">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title">Login</h4>
+    </div>
+    <div class="margin-2em">
+      <%= form_for :user, url: session_path(:user), html: {:class => "form-signin"} do |f| %>
+      <%= f.email_field :email, class: "form-control", placeholder: "Email", option: {required: "required"} %>
+      <%= f.password_field :password , class: "form-control" , placeholder: "Password", required:"required" %>
+      <div id="remember" class="checkbox">
+        <%= f.label :remember_me do %>
+        <%= f.check_box :remember_me  %>Remember Me
+        <% end %>
+      </div>
+      <%= f.submit 'Sign in' , class: "btn btn-lg btn-primary btn-block btn-signin" %>
+      <% end %>
+      <%= link_to "Forgot your password?", new_password_path(:user), class: "forgot-password" %>
+    </div>
+  </div>
+</div>
