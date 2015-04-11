@@ -3,6 +3,7 @@ class ConceptsController < ApplicationController
 
   def index
     @concepts = Concept.all
+    @concept = Concept.new
   end
 
   def new
@@ -18,6 +19,7 @@ class ConceptsController < ApplicationController
 
   def edit
     # @concept = Concept.find(params[ :id ])
+     @concepts = Concept.all
   end
 
   def update

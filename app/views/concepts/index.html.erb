@@ -1,23 +1,16 @@
-
 <div class="container">
   <div class="row">
-
-    <div class="col-lg-4">
-      <h3>Tags:</h3>
-      <ul class="list-group">
-        <% @concepts.each do |concept| %>
-        <li class="list-group-item"><%= concept.concept %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= render 'tags' %>
     <div class="concepts col-lg-8">
-      <h3>Concepts:</h3>
+      <h3>Concepts: <%= link_to 'Create concept',new_concept_path, class: "btn btn-primary pull-right"  , "data-toggle" => "modal" , "data-target" => "#create-concept" %></h3>
       <hr>
       <% @concepts.each do |concept| %>
       <div class="concept row">
         <div class="col-lg-3">
           <h4><%= concept.concept %></h4>
           <p class="date"><%= concept.date.strftime("at %B %d - %Y") %></p>
+          <%= link_to 'edit' , edit_concept_path(concept) %>
+          <%= link_to 'delete' , concept_path(concept), method: :delete , data: {confirm: "are you sure you want to delete it?"}  %>
         </div>
         <div class="col-lg-9">
           <p><%= concept.description %></p>
@@ -27,5 +20,5 @@
       <% end %>
     </div>
   </div>
-
 </div>
+<%= render 'modal_new_concept' %>
