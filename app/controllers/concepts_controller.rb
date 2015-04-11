@@ -13,7 +13,7 @@ class ConceptsController < ApplicationController
     @concept = Concept.new(concepts_params)
     @concept.user = current_user
     @concept.save
-    redirect to @concept
+    redirect_to @concept
   end
 
   def edit
@@ -23,7 +23,7 @@ class ConceptsController < ApplicationController
   def update
     # @concept = Concept.find(params[ :id ])
     @concept.update(concepts_params)
-    redirect to @concept
+    redirect_to @concept
   end
 
   def destroy

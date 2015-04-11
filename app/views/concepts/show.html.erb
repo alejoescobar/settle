@@ -1,2 +1,15 @@
-<h1>Concepts#show</h1>
-<p>Find me in app/views/concepts/show.html.erb</p>
+<div class="container">
+  <h1><%= @concept.concept %> </h1>
+  <br>
+  <%= @concept.date %> <br>
+  <%= @concept.description %> <br>
+  <%= @concept.difficulty %> <br>
+  <%= @concept.state %>
+
+  <p>
+    <%= link_to "Edit", edit_concept_path(@concept), class: "btn btn-default" %>
+    <%= link_to 'Delete' , concept_path(@concept), method: :delete , class: "btn btn-danger", data: {confirm: "are you sure you want to delete it?"}  %>
+    <%= link_to "OK", concepts_path , class: "btn btn-primary" %>
+
+  </p>
+</div>

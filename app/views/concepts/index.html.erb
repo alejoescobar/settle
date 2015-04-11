@@ -1,2 +1,31 @@
-<h1>Concepts#index</h1>
-<p>Find me in app/views/concepts/index.html.erb</p>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-4">
+      <h3>Tags:</h3>
+      <ul class="list-group">
+        <% @concepts.each do |concept| %>
+        <li class="list-group-item"><%= concept.concept %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="concepts col-lg-8">
+      <h3>Concepts:</h3>
+      <hr>
+      <% @concepts.each do |concept| %>
+      <div class="concept row">
+        <div class="col-lg-3">
+          <h4><%= concept.concept %></h4>
+          <p class="date"><%= concept.date.strftime("at %B %d - %Y") %></p>
+        </div>
+        <div class="col-lg-9">
+          <p><%= concept.description %></p>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+    </div>
+  </div>
+
+</div>
