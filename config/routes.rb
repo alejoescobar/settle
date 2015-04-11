@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  get 'pages/index'
+
   resources :concepts
-  root to: "concepts#index"
+  root to: "pages#index"
+
   devise_for :users
+  devise_scope :user do
+    get "/login" => "devise/sessions#new"
+    get "/sign_up" => "devise/registrations#new"
+    # authenticated :user do
+    #   root :to => 'concepts#index', as: :authenticated_root
+    # end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
