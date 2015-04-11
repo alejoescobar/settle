@@ -1,1 +1,6 @@
-<h1>Hey everyone!!</h1>
+<% @concepts.each do |concept| %>
+  <%= concept.concept %>
+<% end %>
+
+<%= line_chart Concept.group_by_day(:created_at).count %>
+<%= column_chart data_organizer, colors: ["#3EFF00", "yellow", "#FF0ECD"] %>

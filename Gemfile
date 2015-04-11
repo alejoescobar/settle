@@ -18,6 +18,11 @@ gem 'devise', '~> 3.4.1'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-sass', '~> 4.3.0'
 
+gem 'chartkick', '~> 1.3.2'
+gem 'groupdate', '~> 2.4.0'
+gem 'hightop', '~> 0.1.2'
+gem 'active_median', '~> 0.1.2'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

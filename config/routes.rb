@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :concepts
-  root to: "concepts#index"
+  root to: "dashboard#index"
   devise_for :users
 
 
