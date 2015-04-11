@@ -1,27 +1,46 @@
 class ConceptsController < ApplicationController
-  def index
+    before_filter :fetch_concept, only: [:edit, :update, :destroy, :show ]
 
+  def index
+    @concepts = Concept.all
   end
 
   def new
+    @concept = Concept.new
   end
 
   def create
+    @concept = Concept.new(concepts_params)
+    @concept.user = current_user
+    @concept.save
+    redirect_to @concept
   end
 
   def edit
+    # @concept = Concept.find(params[ :id ])
   end
 
   def update
+    # @concept = Concept.find(params[ :id ])
+    @concept.update(concepts_params)
+    redirect_to @concept
   end
 
   def destroy
+    # @concept = Concept.find(params[ :id ])
+    @concept.destroy
+    redirect_to action: 'index'
   end
 
   def show
+    # @concept = Concept.find(params[ :id ])
   end
 
-  def CHANGETHIS_params
-    params.require(:CHANGETHIS).permit(:field, :field)
+  private
+  def fetch_concept
+     @concept = Concept.find(params[ :id ])
+  end
+  def concepts_params
+    params.require(:concept).permit(:concept, :date,:description,:difficulty,:state)
   end
 end
