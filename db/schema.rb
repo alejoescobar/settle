@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411013906) do
+ActiveRecord::Schema.define(version: 20150411151715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,28 @@ ActiveRecord::Schema.define(version: 20150411013906) do
     t.integer  "state"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
+
+  add_index "concepts", ["user_id"], name: "index_concepts_on_user_id", using: :btree
+
+  create_table "concepts_tags", id: false, force: :cascade do |t|
+    t.integer "concept_id", null: false
+    t.integer "tag_id",     null: false
+  end
+
+  add_index "concepts_tags", ["concept_id", "tag_id"], name: "index_concepts_tags_on_concept_id_and_tag_id", using: :btree
+  add_index "concepts_tags", ["tag_id", "concept_id"], name: "index_concepts_tags_on_tag_id_and_concept_id", using: :btree
+
+  create_table "sources", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "concept_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sources", ["concept_id"], name: "index_sources_on_concept_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -50,4 +71,6 @@ ActiveRecord::Schema.define(version: 20150411013906) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "concepts", "users"
+  add_foreign_key "sources", "concepts"
 end
