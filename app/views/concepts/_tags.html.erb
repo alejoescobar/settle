@@ -1,0 +1,8 @@
+<div class="col-lg-4">
+  <h3>Tags:</h3>
+  <ul class="list-group">
+    <% @concepts.each do |concept| %>
+    <li class="list-group-item"><%= concept.concept %></li>
+    <% end %>
+  </ul>
+</div>
