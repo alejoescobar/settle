@@ -1,2 +1,24 @@
-<h1>Concepts#index</h1>
-<p>Find me in app/views/concepts/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= render 'tags' %>
+    <div class="concepts col-lg-8">
+      <h3>Concepts: <%= link_to 'Create concept',new_concept_path, class: "btn btn-primary pull-right"  , "data-toggle" => "modal" , "data-target" => "#create-concept" %></h3>
+      <hr>
+      <% @concepts.each do |concept| %>
+      <div class="concept row">
+        <div class="col-lg-3">
+          <h4><%= concept.concept %></h4>
+          <p class="date"><%= concept.date.strftime("at %B %d - %Y") %></p>
+          <%= link_to 'edit' , edit_concept_path(concept) %>
+          <%= link_to 'delete' , concept_path(concept), method: :delete , data: {confirm: "are you sure you want to delete it?"}  %>
+        </div>
+        <div class="col-lg-9">
+          <p><%= concept.description %></p>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render 'modal_new_concept' %>

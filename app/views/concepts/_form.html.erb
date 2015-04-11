@@ -1,9 +1,7 @@
-
 <%= bootstrap_form_for(@concept) do |f| %>
 <div class='row'>
   <div class="col-sm-12">
     <%= f.text_field :concept %>
-
     <%= f.text_area :description %>
   </div>
 </div>
@@ -18,5 +16,6 @@
     <%= f.select :state, options_for_select(Concept.states.keys), { label: "Mood:" }, { class: "selectpicker" } %>
   </div>
 </div>
-<%= f.submit "Create Concept" %>
+<%= link_to 'Cancel', concepts_path, class: "btn btn-default pull-left" %>
+<%= f.submit class: "btn btn-primary pull-right" %>
 <% end %>
