@@ -2,7 +2,7 @@ class ConceptsController < ApplicationController
     before_filter :fetch_concept, only: [:edit, :update, :destroy, :show ]
 
   def index
-    @concepts = Concept.all
+    @concepts = Concept.all.where(user_id: current_user)
     @concept = Concept.new
   end
 

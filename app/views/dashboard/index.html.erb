@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <%= line_chart Concept.group_by_day(:created_at).count %>
+    <%= line_chart Concept.group_by_day(:created_at).where(user_id: current_user).count %>
   </div>
   <div class="col-md-6">
     <%= column_chart data_organizer, colors: ["#5cb85c", "#f0ad4e", "#d9534f"] %>

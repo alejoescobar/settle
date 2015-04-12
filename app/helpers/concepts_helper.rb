@@ -1,7 +1,7 @@
 module ConceptsHelper
   def data_organizer
       result = []
-      concept_data = Concept.group(:difficulty).count
+      concept_data = Concept.group(:difficulty).where(user_id: current_user).count
       concept_data.each do |key, value|
         if key == 0
           easy = {"name":"Easy","data":{"Difficulty": concept_data[key]}}
@@ -16,7 +16,7 @@ module ConceptsHelper
       end
       order = [1, 0, 2]
       result = order.map { |x| result[x] }
-      result  
+      result
   end
 
   def daily_average
@@ -43,7 +43,7 @@ module ConceptsHelper
       concept_array = concept[:y].each{ |x| puts x }
       if concept_array.empty?
         counter = 0
-      else 
+      else
         counter += 1
       end
     end
