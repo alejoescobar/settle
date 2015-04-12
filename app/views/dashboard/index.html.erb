@@ -22,7 +22,8 @@
   </div>
 </div>
 
-<h1>
-  <% daily_concepts.each do |concept| %>
+<div id="calendar">
+  <%= calendar do |date| %>
+    <%= date.day %>
   <% end %>
-</h1>
+</div>
