@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'pages/index'
+  get 'dashboard/index'
 
   resources :concepts
+
   root to: "pages#index"
 
   devise_for :users

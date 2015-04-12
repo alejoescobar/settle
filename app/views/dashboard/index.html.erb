@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= line_chart Concept.group_by_day(:created_at).count %>
+  </div>
+  <div class="col-md-6">
+    <%= column_chart data_organizer, colors: ["#5cb85c", "#f0ad4e", "#d9534f"] %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <p><%= @concepts.count %></p>
+    <p><%= Concept.average(:difficulty, :group => "DATE_TRUNC('day', date)") %></p>
+  </div>
+  <div class="col-md-4">
+    <p><%= @concepts.count %></p>
+    <p><%= Concept.average(:difficulty, :group => "DATE_TRUNC('day', date)") %></p>
+  </div>
+  <div class="col-md-4">
+    <p><%= @concepts.count %></p>
+    <p><%= Concept.average(:difficulty, :group => "DATE_TRUNC('day', date)") %></p>
+  </div>
+</div>
+
+<h1>
+  <%= daily_concepts.each do |concept| %>
+</h1>
