@@ -3,27 +3,31 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
  @import "rails_bootstrap_forms";
+ @import "block-grid";
  @import url('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300');
 
 // General App Styles
 
-textarea.form-control {
-  height: 100%;
-}
+
 .alert{position: absolute; right: 20px; z-index: 100;}
 .navbar {margin-bottom: 0;}
-.intro-header{
-  .btn-default{ background: none; color: white;}
-  background-image: image-url("home-bg.jpg");
-  background-size: cover;
-  padding: 6em 0;
-  color: #FFF;
-  text-align: center;
-  h1{ width: 75%; margin: 0 12%;}
-  p { padding: 2em 0;}
-  a.btn:hover { background: rgba(255,255,255,0.6); }
+ul.tags {
+  li{
+    margin: 0;
+    padding: 0;
+    &:first-child{
+      padding-left: 8px;
+    }
+    a{
+     background: #82BFAD;
+     display: inline-block;
+     font-size: 0.85em;
+     color: white;
+     padding: 5px 8px;
+     border-radius: 6px;
+   }
+ }
 }
-
 
 .card {
   input {margin-bottom: 15px;}
@@ -40,35 +44,55 @@ textarea.form-control {
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   }
-.card-container.card {
-  width: 500px;
-  padding: 40px 40px;
-}
-
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
-.modal-new-concept{
-  .card-container {
-    .modal-header{
-      margin-bottom: 20px;
-    }
-    padding-bottom: 80px;
+  .card-container.card {
+    width: 500px;
+    padding: 40px 40px;
   }
-}
-.concepts{
 
-  // margin-top: 2em;
-  .concept{
-    a{
-      font-size: 0.85em;
+  @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
+
+
+  .section-pages-index{
+    .intro-header{
+      .btn-default{ background: none; color: white;}
+      background-image: image-url("home-bg.jpg");
+      background-size: cover;
+      padding: 6em 0;
+      color: #FFF;
+      text-align: center;
+      h1{ width: 75%; margin: 0 12%;}
+      p { padding: 2em 0;}
+      a{
+        border: 2px solid white;
+        &.btn:hover { background: rgba(255,255,255,0.6); }
+      }
+    }
+    .lastest-concepts{
+      margin-top: 2em;
     }
   }
-  h4{
-   margin: 0;
-   font-family: 'Droid Sans', sans-serif;
-   font-weight: 700;
-   text-transform: uppercase;
- }
-  p{
+
+
+  .modal-new-concept{
+    .card-container {
+      .modal-header{
+        margin-bottom: 20px;
+      }
+      padding-bottom: 80px;
+    }
+  }
+  .concepts{
+    .concept{
+      a{ font-size: 0.85em; }
+    }
+    h4{
+     margin: 0;
+     font-family: 'Droid Sans', sans-serif;
+     font-weight: 700;
+     text-transform: uppercase;
+   }
+   p{
     font-size: 1.2em;
     color: #4E4D4D;
     line-height: 1.5em;
