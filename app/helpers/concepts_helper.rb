@@ -16,4 +16,15 @@ module ConceptsHelper
       end
       result  
   end
+
+  # def daily_average
+  #   init_time = Time.at(current_user.created_at)
+  #   last_time = Time.now
+  #   average = (last_time - init_time)/(24*60*60)
+  #   average.round
+  # end
+
+  def daily_concepts
+    Concept.where('created_at BETWEEN ? AND ?', DateTime.now.in_time_zone.beginning_of_month, DateTime.now.in_time_zone.end_of_month)
+  end
 end
