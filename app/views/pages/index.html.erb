@@ -8,7 +8,8 @@
             <h1>Settle is the new way keep track <strong>of your knowledge</strong></h1>
             <p>
               <% if user_signed_in? %>
-              <%= link_to "My Concepts", concepts_path(), class: "btn btn-default btn-lg" %>
+              <%= link_to "My Concepts", concepts_path, class: "btn btn-default btn-lg" %>
+              <%= link_to "Dashboard", dashboard_index_path, class: "btn btn-default btn-lg" %>
               <% else %>
               <%= link_to "create account", new_user_registration_path, class: "btn btn-default btn-lg" %>
               <%= link_to "login", "login_modal", class: "btn btn-default btn-lg" , "data-toggle" => "modal" , "data-target" => "#login" %>
@@ -24,22 +25,25 @@
 
   <!-- Page Features -->
   <div class=" container lastest-concepts">
-  <div class="row">
-    <div class="block-grid-lg-4 block-grid-md-3 block-grid-sm-3 block-grid-xs-2">
-      <% @lastconcepts.each do |concept| %>
-      <div class="block-grid-item">
-        <div class="thumbnail">
-          <h3><%= concept.concept %></h3>
-          <ul class="tags list-inline">
-            <li><a href="#">Jquery</a></li>
-            <li><a href="#">Html</a></li>
-            <li><a href="#">CSS</a></li>
-          </ul>
-          <p><a href="#" class="btn btn-default btn-sm">See Concept</a></p>
+    <div class="row">
+      <div class="block-grid-lg-4 block-grid-md-3 block-grid-sm-3 block-grid-xs-2">
+        <% @lastconcepts.each do |concept| %>
+        <div class="block-grid-item">
+          <div class="thumbnail">
+            <h3><%= concept.concept %></h3>
+            <ul class="tags list-inline">
+              <li><a href="#">Jquery</a></li>
+              <li><a href="#">Html</a></li>
+              <li><a href="#">CSS</a></li>
+            </ul>
+            <p class="small">Dificulty: <strong><%= concept.difficulty %></strong></p>
+            <p>
+              <%= link_to 'See Concept', concept_path(concept.id), class: "btn btn-default btn-sm" %>
+            </p>
+          </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
-</div>
 </section>
