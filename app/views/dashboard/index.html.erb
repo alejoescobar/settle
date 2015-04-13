@@ -22,8 +22,25 @@
   </div>
 </div>
 
-<div id="calendar">
+<div id="concept">
   <%= calendar do |date| %>
     <%= date.day %>
+      <ul>
+        <% @concepts_by_date.each do |concept_date, concept| %>
+          <% print "This is the date: "%>
+          <% puts date %>
+          <% print "This is the concept date: "%>
+          <% puts concept_date %>
+          <% puts date == concept_date.to_date %>
+          <% print "This is a concept: "%>
+          <% concept.each { |x| puts x.concept } %>
+          <% if date == concept_date.to_date %>
+            <% puts "I'm passing through here" %>
+            <% concept.each do |concept_name| %>
+            <li><%= concept_name.concept %></li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
   <% end %>
 </div>
