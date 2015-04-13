@@ -1,46 +1,48 @@
-<div class="row">
-  <div class="col-md-6">
-    <%= line_chart Concept.group_by_day(:created_at).count %>
-  </div>
-  <div class="col-md-6">
-    <%= column_chart data_organizer, colors: ["#5cb85c", "#f0ad4e", "#d9534f"] %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-    <p><%= @concepts.count %></p>
-    <p>Total de conceptos</p>
-  </div>
-  <div class="col-md-4">
-    <p><%= daily_average %></p>
-    <p>Promedio conceptos/día</p>
-  </div>
-  <div class="col-md-4">
-    <p><%= daily_streak %></p>
-    <p>Day streak</p>
+<div class=" container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= line_chart Concept.group_by_day(:created_at).where(user_id: current_user).count %>
+    </div>
+    <div class="col-md-6">
+      <%= column_chart data_organizer, colors: ["#5cb85c", "#f0ad4e", "#d9534f"] %>
+    </div>
   </div>
 </div>
-
-<div id="concept">
+<div class=" container">
+  <div class="row">
+    <div class="col-md-4">
+      <p><%= @concepts.count %></p>
+      <p>Total de conceptos</p>
+    </div>
+    <div class="col-md-4">
+      <p><%= daily_average %></p>
+      <p>Promedio conceptos/día</p>
+    </div>
+    <div class="col-md-4">
+      <p><%= daily_streak %></p>
+      <p>Day streak</p>
+    </div>
+  </div>
+</div>
+<div class="container" id="concept">
   <%= calendar do |date| %>
-    <%= date.day %>
-      <ul>
-        <% @concepts_by_date.each do |concept_date, concept| %>
-          <% print "This is the date: "%>
-          <% puts date %>
-          <% print "This is the concept date: "%>
-          <% puts concept_date %>
-          <% puts date == concept_date.to_date %>
-          <% print "This is a concept: "%>
-          <% concept.each { |x| puts x.concept } %>
-          <% if date == concept_date.to_date %>
-            <% puts "I'm passing through here" %>
-            <% concept.each do |concept_name| %>
-            <li><%= link_to concept_name.concept, concept_name %></li>
-            <% end %>
-          <% end %>
-        <% end %>
-      </ul>
+  <%= date.day %>
+  <ul>
+    <% @concepts_by_date.each do |concept_date, concept| %>
+    <% print "This is the date: "%>
+    <% puts date %>
+    <% print "This is the concept date: "%>
+    <% puts concept_date %>
+    <% puts date == concept_date.to_date %>
+    <% print "This is a concept: "%>
+    <% concept.each { |x| puts x.concept } %>
+    <% if date == concept_date.to_date %>
+    <% puts "I'm passing through here" %>
+    <% concept.each do |concept_name| %>
+    <li><%= link_to concept_name.concept, concept_name %></li>
+    <% end %>
+    <% end %>
+    <% end %>
+  </ul>
   <% end %>
 </div>

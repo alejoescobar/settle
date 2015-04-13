@@ -4,5 +4,6 @@ class PublicController < ApplicationController
   end
    def user
     @user = User.find(params[ :id ])
+    @concepts = Concept.all.where(user_id: params[ :id ])
   end
 end
