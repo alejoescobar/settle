@@ -1,7 +1,7 @@
 module ConceptsHelper
   def data_organizer
       result = [{"name":"Easy","data":{"Difficulty":0}}, {"name":"Medium","data":{"Difficulty":0}}, {"name":"Hard","data":{"Difficulty":0}}]
-      concept_data = Concept.group(:difficulty).where(user_id: 1).count
+      concept_data = Concept.group(:difficulty).where(user_id: current_user).count
       concept_data.each do |key, value|
         if key == 0
           result[0] = {"name":"Easy","data":{"Difficulty": concept_data[key]}}
