@@ -39,7 +39,7 @@
     <% if date == concept_date.to_date %>
     <% puts "I'm passing through here" %>
     <% concept.each do |concept_name| %>
-    <li><%= concept_name.concept %></li>
+    <li><%= link_to concept_name.concept, concept_name %></li>
     <% end %>
     <% end %>
     <% end %>

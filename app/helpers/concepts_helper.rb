@@ -1,21 +1,16 @@
 module ConceptsHelper
   def data_organizer
-      result = []
+      result = [{"name":"Easy","data":{"Difficulty":0}}, {"name":"Medium","data":{"Difficulty":0}}, {"name":"Hard","data":{"Difficulty":0}}]
       concept_data = Concept.group(:difficulty).where(user_id: current_user).count
       concept_data.each do |key, value|
         if key == 0
-          easy = {"name":"Easy","data":{"Difficulty": concept_data[key]}}
-          result.push(easy)
+          result[0] = {"name":"Easy","data":{"Difficulty": concept_data[key]}}
         elsif key == 1
-          medium = {"name":"Medium","data":{"Difficulty": concept_data[key]}}
-          result.push(medium)
+          result[1] = {"name":"Medium","data":{"Difficulty": concept_data[key]}}
         elsif key == 2
-          difficult = {"name":"Hard","data":{"Difficulty": concept_data[key]}}
-          result.push(difficult)
-        end
+          result[2] = {"name":"Hard","data":{"Difficulty": concept_data[key]}}
+        end 
       end
-      order = [1, 0, 2]
-      result = order.map { |x| result[x] }
       result
   end
 
