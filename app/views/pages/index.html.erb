@@ -38,8 +38,9 @@
             </ul>
             <p class="small">Dificulty: <strong><%= concept.difficulty %></strong></p>
             <p>
-              <%= link_to 'See Concept', concept_path(concept.id), class: "btn btn-default btn-sm" %>
+              <%= link_to 'See Concept', public_concept_path(concept.id), class: "btn btn-default btn-sm" %>
             </p>
+            <p class="small">by: <%= link_to "#{concept.user.email}", public_user_path(concept.user.id) %></p>
           </div>
         </div>
         <% end %>

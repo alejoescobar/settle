@@ -7,7 +7,7 @@
  @import url('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300');
 
 // General App Styles
-
+.center{margin: 0 auto; text-align: center;}
 .alert{position: absolute; right: 20px; z-index: 100;}
 .navbar {margin-bottom: 0;}
 ul.tags {
@@ -20,10 +20,10 @@ ul.tags {
     a{
      background: #82BFAD;
      display: inline-block;
-     font-size: 0.85em;
+     font-size: 0.7em;
      color: white;
-     padding: 5px 8px;
-     border-radius: 6px;
+     padding: 1px 3px;
+     border-radius: 3px;
    }
  }
 }
